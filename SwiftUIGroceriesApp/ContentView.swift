@@ -27,18 +27,42 @@ struct ContentView: View {
     }
 }
 struct Home: View {
+    @State var txt = ""
     var body: some View {
-        VStack {
-            Text("Home")
+        VStack(spacing: 15) {
+            HStack(spacing: 12) {
+                Image("Home").renderingMode(.original).resizable().frame(width:30, height: 30)
+                Text("Hey, Richy").font(.body)
+                Spacer()
+                Button(action: {
+                   
+                }) {
+                    Image("filter").renderingMode(.original)
+                }
+            }
+            
+            HStack(spacing: 15) {
+                HStack {
+                    Image(systemName: "magnifyingglass").font(.body)
+                    TextField("Search Groceries", text: $txt)
+                }.padding(10)
+                .background(Color("Color1"))
+                .cornerRadius(15)
+                
+                Button(action: {
+                   
+                }) {
+                    Image("mic").renderingMode(.original)
+                }
+            }
             
             Spacer()
-        }
+
+        }.padding(.horizontal)
     }
 }
 struct CustomTabView : View {
-    
     @Binding var selected : String
-    
     var body : some View{
         HStack{
             ForEach(tabs,id: \.self){i in
@@ -62,9 +86,6 @@ struct CustomTabView : View {
         }.padding(.horizontal)
     }
 }
-
-
-
 
 // sample datas...
 var tabs = ["Home","Wishlist","Cart"]
