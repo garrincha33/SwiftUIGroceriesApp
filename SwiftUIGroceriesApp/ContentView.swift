@@ -48,6 +48,24 @@ struct HomeBottomView: View {
                     }
                 }
             })
+            
+            HStack {
+                Text("Recipe")
+                Spacer()
+                
+                Button(action: {
+                    
+                }) {
+                    Text("More")
+                }.foregroundColor(Color("Color"))
+            }.padding(.vertical, 15)
+        ScrollView(.horizontal, showsIndicators: false, content: {
+            HStack(spacing: 15) {
+                ForEach(recipeitems) { i in
+                    RecipeCellView(data: i)
+                    }
+                }
+            })
         }
     }
 }
@@ -59,6 +77,22 @@ struct FreshCellView: View {
             Image(data.image)
             Text(data.name).fontWeight(.semibold)
             Text(data.price).foregroundColor(.green).fontWeight(.semibold)
+        }
+    }
+}
+
+struct RecipeCellView: View {
+    var data : recipe
+    var body: some View {
+        VStack(spacing: 10) {
+            Image(data.image)
+            HStack(spacing: 10) {
+                Image(data.authorpic)
+                VStack {
+                    Text(data.name).fontWeight(.semibold)
+                    Text(data.author).foregroundColor(.green).fontWeight(.semibold)
+                }
+            }
         }
     }
 }
